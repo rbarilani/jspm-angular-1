@@ -2,5 +2,11 @@
   <script src="jspm_packages/system.js"></script>
   <script src="jspm.config.js"></script>
   <script>
-    System.import('src/main.js');
+    System
+      .import('src/main.js')
+      .then(function () {
+        System.import('rbarilani/jspm-angular-1-plugin-hello-world').then(function () {
+          console.log('Plugin loaded!');
+        });
+      });
   </script>
