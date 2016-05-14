@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/main.js",
   "scripts": {
+    "install-as-link": "jspm link github:rbarilani/jspm-angular-1-plugin-hello-world",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

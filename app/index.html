@@ -1,12 +1,48 @@
 <!doctype html>
+<html>
+<body>
+  <h1>jspm-angular-1-app</h1>
+  <p>{{ text }}</p>
   <script src="jspm_packages/system.js"></script>
   <script src="jspm.config.js"></script>
   <script>
+
+    // load common deps
     System
-      .import('src/main.js')
+      .import('src/bootstrap.js')
+
+      // load plugins
       .then(function () {
-        System.import('rbarilani/jspm-angular-1-plugin-hello-world').then(function () {
-          console.log('Plugin loaded!');
+
+        return Promise.all([
+          System.import('rbarilani/jspm-angular-1-plugin-hello-world'),
+        ])
+
+      })
+
+      // declare angular main app module and load the app
+      .then(function(plugins) {
+
+        // extract angular modules name
+        var ngModules = plugins.map(function (plugin) {
+          return plugin.default.name;
         });
+
+        // declare the app module
+        angular.module('jspm-angular-1-app', ngModules);
+
+        // load the angular app
+        return Promise.all([System.import('src/main.js')]);
+
+      })
+
+      // finally bootstrap the angular app
+      .then(function () {
+
+        angular.bootstrap(document, ['jspm-angular-1-app']);
+
       });
+
   </script>
+</body>
+</html>

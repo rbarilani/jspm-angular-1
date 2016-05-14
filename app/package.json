@@ -4,7 +4,6 @@
   "description": "",
   "main": "src/main.js",
   "scripts": {
-    "start": "lite-server",
     "install-links": "jspm install --link github:rbarilani/jspm-angular-1-bundle && jspm install --link github:rbarilani/jspm-angular-1-plugin-hello-world",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,8 +16,5 @@
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "core-js": "npm:core-js@^1.1.4"
     }
-  },
-  "devDependencies": {
-    "lite-server": "^2.2.0"
   }
 }
