@@ -27,20 +27,20 @@ let defaultFormatter = function (level, args) {
   let _args = args.slice();
   _args.unshift(`[${this.channel}.${level.toUpperCase()}]:`);
   return _args;
-}
+};
 
 let defaultTransport = function (level, args) {
   let _method = console[level] ? level : 'log';
   console[_method].apply(console, args || []);
-}
+};
 
-let formatterFactory = function (channel) {
+let loggerFactory = function (channel) {
   let logger = new Logger(channel);
   logger
     .setTransport(defaultTransport)
     .setFormatter(defaultFormatter);
   return logger;
-}
+};
 
-export default formatterFactory;
+export default loggerFactory;
 export {Logger, defaultTransport, defaultFormatter};
