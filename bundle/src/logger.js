@@ -5,35 +5,42 @@ class Logger {
 
   setTransport(transport) {
     this.transport = transport;
+    return this;
   }
 
   setFormatter(formatter) {
     this.formatter = formatter;
+    return this;
   }
 }
 
-['debug', 'log', 'info', 'warn', 'error'].forEach(function (method) {
-  Logger.prototype[method] = function (...args) {
-    let _args = this.formatter.call(this, args);
-    if(this.transport[method]) {
-      this.transport[method].apply(this.transport, _args);
-    }
+Logger.LEVELS = ['debug', 'log', 'info', 'warn', 'error'];
+
+Logger.LEVELS.forEach(function (level) {
+  Logger.prototype[level] = function (...args) {
+    this.transport(level, this.formatter(level, args));
     return this;
   };
 });
 
-let defaultFormatter = function (args) {
+let defaultFormatter = function (level, args) {
   let _args = args.slice();
-  _args.unshift('[' + this.channel + ']:');
+  _args.unshift(`[${this.channel}.${level.toUpperCase()}]:`);
   return _args;
+}
+
+let defaultTransport = function (level, args) {
+  let _method = console[level] ? level : 'log';
+  console[_method].apply(console, args || []);
 }
 
 let formatterFactory = function (channel) {
   let logger = new Logger(channel);
-  logger.setTransport(console);
-  logger.setFormatter(defaultFormatter);
+  logger
+    .setTransport(defaultTransport)
+    .setFormatter(defaultFormatter);
   return logger;
 }
 
 export default formatterFactory;
-export {Logger};
+export {Logger, defaultTransport, defaultFormatter};
