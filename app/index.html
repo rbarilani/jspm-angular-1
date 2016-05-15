@@ -22,7 +22,7 @@
 
     // load common deps
     System
-      .import('src/bootstrap.js')
+      .import('src/bootstrap.js') // dist/bootstrap.js or src/bootstrap.js
 
       // load plugins
       .then(function () {
@@ -45,7 +45,7 @@
         angular.module('jspm-angular-1-app', ngModules);
 
         // load the angular app
-        return Promise.all([System.import('src/main.js')]);
+        return Promise.all([System.import('src/main.js')]); // dist/main.js or src/main.js
 
       })
 

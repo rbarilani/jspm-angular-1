@@ -4,6 +4,8 @@
   "description": "",
   "main": "src/main.js",
   "scripts": {
+    "build:src": "jspm bundle src/main.js - rbarilani/jspm-angular-1-bundle dist/main.js",
+    "build:vendors": "jspm bundle src/bootstrap.js dist/bootstrap.js",
     "install-links": "jspm install --link github:rbarilani/jspm-angular-1-bundle && jspm install --link github:rbarilani/jspm-angular-1-plugin-hello-world",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
