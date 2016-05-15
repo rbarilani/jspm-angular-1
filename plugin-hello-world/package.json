@@ -1,10 +1,12 @@
 {
   "name": "jspm-angular-1-plugin-hello-world",
   "version": "0.0.0-alpha",
+  "registry": "github",
   "description": "",
   "main": "src/main.js",
   "scripts": {
-    "install-as-link": "jspm link github:rbarilani/jspm-angular-1-plugin-hello-world",
+    "start": "watch -p \"src/**/*.js\" -c \"npm run jspm-link --silent\"",
+    "jspm-link": "jspm link github:rbarilani/jspm-angular-1-plugin-hello-world",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

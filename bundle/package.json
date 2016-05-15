@@ -2,9 +2,11 @@
   "name": "jspm-angular-1-bundle",
   "version": "0.0.0-alpha",
   "description": "",
+  "registry": "github",
   "main": "dist/jspm-angular-1-bundle.js",
   "scripts": {
-    "install-as-link": "jspm link github:rbarilani/jspm-angular-1-bundle -y",
+    "start": "watch -p \"src/**/*.js\" -c \"npm run jspm-link --silent\"",
+    "jspm-link": "jspm link github:rbarilani/jspm-angular-1-bundle -y",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

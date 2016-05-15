@@ -1,8 +1,21 @@
 <!doctype html>
 <html>
 <body>
-  <h1>jspm-angular-1-app</h1>
-  <p>{{ text }}</p>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Demo: JSPM</h1>
+      <h3>...importing angular + es6 + css with jspm</h3>
+
+      <div class="form-group">
+        <label for="text">Text</label>
+        <input type="text" class="form-control" ng-model="text" id="text" placeholder="text">
+      </div>
+      <p ng-if="text">
+        <code>{{ text }}</code>
+      </p>
+    </div>
+  </div>
+
   <script src="jspm_packages/system.js"></script>
   <script src="jspm.config.js"></script>
   <script>
